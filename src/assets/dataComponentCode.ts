@@ -1,5 +1,10 @@
 export const buttonCode = `
-interface ButtonProps { label?: string }
+import { MouseEventHandler } from 'react';
+
+interface ButtonProps {
+    label?: string;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
+}
 
 const buttonStyles =
     'rounded-3xl p-2 m-2 w-28 bg-green-500 hover:bg-green-200 hover:text-zinc-700';

@@ -1,5 +1,6 @@
 import './App.css';
-import { ComponentRender } from './components/ComponentRenderer';
+import { ComponentRender } from './components/ComponentRender';
+
 // import { ComponentCodeRender } from './components/ComponentRenderer/ComponentCodeRender';
 
 function App() {

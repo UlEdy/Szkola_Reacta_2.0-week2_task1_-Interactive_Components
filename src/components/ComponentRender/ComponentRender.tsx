@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { Button, Text, Header } from '../../ui';
 import { ComponentCodeRender } from './ComponentCodeRender';
+import * as componentCodeData from '../../assets/dataComponentCode';
 
-const ComponentRender = () => {
+const componentCodes: { [key: string]: string } = {
+    Button: componentCodeData.buttonCode,
+    Text: componentCodeData.textCode,
+    Header: componentCodeData.headerCode,
+};
+
+export const ComponentRender = () => {
     const [selectedComponent, setSelectedComponent] =
         useState<string>('Button');
 
@@ -10,6 +17,12 @@ const ComponentRender = () => {
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
         setSelectedComponent(event.target.value);
+    };
+
+    const handleCopyCode = () => {
+        const codeToCopy = componentCodes[selectedComponent] as string;
+        navigator.clipboard.writeText(codeToCopy);
+        alert('Code copied to clipboard!');
     };
 
     return (
@@ -35,17 +48,22 @@ const ComponentRender = () => {
             </div>
 
             {/* Code and Component preview */}
-            <div className='flex flex-row justify-center items-center'>
+            <div className='flex flex-row items-center'>
                 {/* Code */}
-                <div className='flex flex-col bg-amber-100 m-3 p-2 ml-0 h-80'>
+                <div className='flex flex-col items-center bg-amber-100 m-3 p-2 ml-0 h-96'>
                     <Header>Code</Header>
+
                     <ComponentCodeRender
                         selectedComponent={selectedComponent}
+                    />
+                    <Button
+                        onClick={handleCopyCode}
+                        label='Copy code'
                     />
                 </div>
 
                 {/* Component preview */}
-                <div className='flex flex-col justify-center items-center w-52 h-80 bg-amber-100 p-2 text-wrap'>
+                <div className='flex flex-col justify-center items-center w-52 h-96 bg-amber-100 p-2 text-wrap'>
                     <Header>Component preview</Header>
                     <div className='flex justify-center items-center h-full'>
                         {selectedComponent === 'Button' && <Button />}
