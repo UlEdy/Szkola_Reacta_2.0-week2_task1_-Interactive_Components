@@ -1,12 +1,10 @@
 import './App.css';
-import { ComponentRender } from './components/ComponentRender';
-
-// import { ComponentCodeRender } from './components/ComponentRenderer/ComponentCodeRender';
+import { GeneratorComponents } from './components/GeneratorComponents';
 
 function App() {
     return (
         <div className='flex flex-col items-center'>
-            <ComponentRender />
+            <GeneratorComponents />
         </div>
     );
 }

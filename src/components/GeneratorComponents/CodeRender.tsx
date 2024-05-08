@@ -7,13 +7,7 @@ import {
     textCode,
 } from '../../assets/dataComponentCode';
 
-interface ComponentCodeRenderProps {
-    selectedComponent: string;
-}
-
-interface ComponentCode {
-    [key: string]: string;
-}
+import { ComponentCode, SelectedComponentProp } from './types';
 
 const componentCodes: ComponentCode = {
     Button: buttonCode,
@@ -21,11 +15,9 @@ const componentCodes: ComponentCode = {
     Header: headerCode,
 };
 
-export const ComponentCodeRender = ({
+export const CodeRender = ({
     selectedComponent = 'Button',
-}: ComponentCodeRenderProps) => {
-    console.log(selectedComponent);
-
+}: SelectedComponentProp) => {
     const code = componentCodes[selectedComponent];
 
     return (
