@@ -7,13 +7,13 @@ interface ButtonProps {
 }
 
 const buttonStyles =
-    'rounded-3xl p-2 m-2 w-28 bg-green-500 hover:bg-green-200 hover:text-zinc-700';
+    'p-2 m-2 min-w-28 bg-lime-400 hover:bg-lime-300 hover:text-zinc-700 text-nowrap rounded-3xl';
 
-const handleClick = () => { alert('Clicked') };
+const handleClick = () => alert('Clicked button!');
 
-export const Button = ({ label = 'Click me!' }: ButtonProps) => {
+export const Button = ({ label = 'Click me!', onClick = handleClick }: ButtonProps) => {
     return (
-        <button className={buttonStyles} onClick={handleClick}>
+        <button className={buttonStyles} onClick={onClick}>
             {label}
         </button>
     );
@@ -23,19 +23,23 @@ export const Button = ({ label = 'Click me!' }: ButtonProps) => {
 export const headerCode = `
 import { ReactNode } from 'react';
 
-type TextProps = { children?: string | ReactNode };
+type HeaderProps = {
+    children?: string | ReactNode;
+};
 
 const headerStyles = 'text-2xl m-2 font-bold';
 
-export const Header = ({ children = 'Example header' }: TextProps) => {
+export const Header = ({ children = 'Example header' }: HeaderProps) => {
     return <h1 className={headerStyles}>{children}</h1>;
 };
 `;
 
 export const textCode = `
-interface TextProps { children?: string };
+interface TextProps {
+    children?: string;
+}
 
-const textStyles = 'text-xl mt-2 mb-5 font-light';
+const textStyles = 'text-xl mt-2 mb-5 font-light max-w-fit';
 export const Text = ({ children = 'Example text' }: TextProps) => {
     return <h1 className={textStyles}>{children}</h1>;
 };

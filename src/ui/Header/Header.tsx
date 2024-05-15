@@ -1,4 +1,8 @@
-import { HeaderProps } from '../types';
+import { ReactNode } from 'react';
+
+type HeaderProps = {
+    children?: string | ReactNode;
+};
 
 const headerStyles = 'text-2xl m-2 font-bold';
 
